@@ -1,2 +1,4 @@
 'venv' 
 desktop.ini
+docker-compose.yml
+db.py
