@@ -12,13 +12,14 @@ HOST = 'localhost'
 PORT = '1234'
 ```
 During development of the project, Docker with Postgres database was used.
-#### Alembic setup
-* Init Alembic in terminal 
-```cmd
-alembic init alembic
+
+###### Database migration
+Run this in in project root folder
 ```
-* Setup alembic.ini with your database URL.
-* Run migration scripts
-```cmd
-alembic upgrade head
+python manage.py migrate
+```
+
+###### Create superuser
+```
+python manage.py createsuperuser
 ```
