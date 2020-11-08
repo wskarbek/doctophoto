@@ -2,8 +2,18 @@
 <html>
 <head>
     <title>Welcome to Doc To Photo</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dtp/style.css' %}">
 </head>
 <body>
-    <h1>Welcome!</h1>
+    <header>
+        <div class="main">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
 </body>
 </html>
