@@ -81,7 +81,15 @@ header {
      background-color: #fff;
      color: #000;
  }
+.register {
+    position: absolute;
+    top: 65%;
+    left: 45%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
 
+}
 .overlay {
   position: fixed;
   top: 0;
