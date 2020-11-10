@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import HttpResponse, render
 
 # Create your views here.
@@ -21,5 +22,31 @@ def contact(request):
 def examination(request, examination_id):
     return HttpResponse("Examination id: %s" % examination_id)
 
+
+def login_patient(request):
+    email = request.POST['email1']
+    password = request.POST['pwd1']
+    user = authenticate(request, email=email, password=password)
+    if user is not None:
+        login(request, user)
+        #TODO: Redirect to examination list page
+    #else:
+        #TODO: Display invalid login
+
+def login_doctor(request):
+    email = request.POST['email1']
+    password = request.POST['pwd1']
+    user = authenticate(request, email=email, password=password)
+    if user is not None:
+        login(request, user)
+        #TODO: Redirect to examination list page
+    #else:
+        #TODO: Display invalid login
+
+
 def signup(request):
-    if
+    return None
+
+
+def logout(request):
+    logout(request)
