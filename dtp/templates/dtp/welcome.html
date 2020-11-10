@@ -22,17 +22,60 @@
         </div>
         <div class="button">
             <a href="#popup1" class="btn">PACJENT</a>
-            <a href="#" class="btn">LEKARZ</a>
+            <a href="#popup2" class="btn">LEKARZ</a>
         </div>
         <div class="register">
-            <h8>Nie masz konta?<a href="popup3" class="b00ton">Zarejestruj się!</a></h8>
+            <h8>Nie masz konta?<a href="#popup3" class="b00ton">Zarejestruj się!</a></h8>
         </div>
         <div id="popup1" class="overlay">
             <div class="popup">
-                <h2>wpisz1</h2>
+                <h2>Zaloguj Się</h2>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    wpisz2
+                    <form>
+                        <label for="email1">Email:</label><br>
+                        <input type="email" id="email1" name="email"><br>
+                        <label for="pwd1">Hasło:</label><br>
+                        <input type="password" id="pwd1" name="pwd1"><br>
+                        <input type="submit" id="submit1" value="Zaloguj się">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="popup2" class="overlay">
+            <div class="popup">
+                <h2>Zaloguj się</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <form>
+                        <label for="email2">Email:</label><br>
+                        <input type="email" id="email2" name="email"><br>
+                        <label for="pwd2">Hasło:</label><br>
+                        <input type="password" id="pwd2" name="pwd2"><br>
+                        <input type="submit" id="submit2" value="Zaloguj się">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="popup3" class="overlay">
+            <div class="popup">
+                <h2>Zarejestruj się</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <form>
+                        <label for="email3">Email:</label><br>
+                        <input type="email" id="email3" name="email"><br>
+                        <label for="pwd3">Hasło:</label><br>
+                        <input type="password" id="pwd3" name="pwd3"><br>
+                        <label for="pwd4">Powtórz Hasło:</label><br>
+                        <input type="password" id="pwd4" name="pwd4"><br>
+                        <input type="radio" id="Lekarz" name="rola" value="Lekarz">
+                        <label for="Lekarz">Lekarz</label>
+                        <input type="radio" id="Pacjent" name="rola" value="Pacjent">
+                        <label for="Pacjent">Pacjent</label><br>
+                        <input type="submit" id="submit3" value="Zarejestruj się">
+
+                    </form>
                 </div>
             </div>
         </div>
