@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import HttpResponse, render
-
+from django.shortcuts import HttpResponse, render, redirect
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def index(request):
@@ -45,7 +45,22 @@ def login_doctor(request):
 
 
 def signup(request):
-    return None
+    if(request.method) == 'POST':
+        form = UserCreationForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            email = form.cleaned_data.get('email3')
+            password = form.cleaned_data.get('pwd3')
+            pow_password = form.cleaned_data.get('pwd4')
+            if(pow_password == password):
+                user = authenticate(email=email, password=password)
+                login(request, user)
+                return redirect('/redirect-success/')
+            else:
+                return None
+        else:
+            form = UserCreationForm()
+    return render(request, 'welcome.html', {'form': form})
 
 
 def logout(request):
