@@ -1,6 +1,5 @@
 from django.shortcuts import HttpResponse, render
 
-
 # Create your views here.
 
 def index(request):
@@ -21,3 +20,6 @@ def contact(request):
 
 def examination(request, examination_id):
     return HttpResponse("Examination id: %s" % examination_id)
+
+def signup(request):
+    if
