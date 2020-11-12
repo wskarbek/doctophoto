@@ -65,6 +65,6 @@ def signup(request):
         form = form_class()
     return render(request, 'welcome', {'form': form })
 
-
+#pog
 def logout(request):
     logout(request)
