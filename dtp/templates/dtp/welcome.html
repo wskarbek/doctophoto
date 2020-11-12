@@ -71,27 +71,13 @@
                 <div class="content">
                     <form action = "{%  url 'signup' %}" method="POST">
                         {% csrf_token %}
-                        <!--label for="email3">Email:</label><br>
-                        <input type="email" id="email3" name="email"><br>
-                        <br>
-                        <label for="pwd3">Hasło:</label><br>
-                        <input type="password" id="pwd3" name="pwd3"><br>
-                        <br>
-                        <label for="pwd4">Powtórz Hasło:</label><br>
-                        <input type="password" id="pwd4" name="pwd4"><br>
-                        <br>
-                        <input type="radio" id="Lekarz" name="rola" value="Lekarz">
-                        <label for="Lekarz">Lekarz</label>
-                        <input type="radio" id="Pacjent" name="rola" value="Pacjent">
-                        <label for="Pacjent">Pacjent</label><br>
-                        <br>-->
-                        {{ form.as_p }}
+
+                        {{ form3.as_p }}
                         {%  if form.errors %}
                         <p>Niepoprawne dane</p>
                         {% endif %}
 
                         <input type="submit" id="submit3" value="Zarejestruj się">
-
                     </form>
                 </div>
             </div>

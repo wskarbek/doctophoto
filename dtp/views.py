@@ -10,7 +10,8 @@ def index(request):
 
 
 def welcome(request):
-    return render(request, 'dtp/welcome.html')
+    form3 = SignUpForm()
+    return render(request, 'dtp/welcome.html', {'form3': form3})
 
 
 def about(request):
