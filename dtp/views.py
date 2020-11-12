@@ -1,7 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from dtp.forms import SignUpForm
 # Create your views here.
+
 
 def index(request):
     return render(request, 'dtp/index.html')
@@ -45,22 +47,22 @@ def login_doctor(request):
 
 
 def signup(request):
-    if(request.method) == 'POST':
-        form = UserCreationForm(request.POST)
-        if(form.is_valid()):
+    form_class = SignUpForm
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            #pow_password = form.pow_password
             form.save()
-            email = form.cleaned_data.get('email3')
-            password = form.cleaned_data.get('pwd3')
-            pow_password = form.cleaned_data.get('pwd4')
-            if(pow_password == password):
-                user = authenticate(email=email, password=password)
-                login(request, user)
-                return redirect('/redirect-success/')
-            else:
-                return None
+            user = authenticate(email=email, password=password)
+            login(request, user)
+            return HttpResponseRedirect('welcome')
         else:
-            form = UserCreationForm()
-    return render(request, 'welcome.html', {'form': form})
+            return HttpResponseRedirect('welcome')
+    else:
+        form = form_class()
+    return render(request, 'welcome', {'form': form })
 
 
 def logout(request):

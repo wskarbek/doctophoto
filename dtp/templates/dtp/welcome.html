@@ -69,8 +69,9 @@
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action = "/account/register" method="GET">
-                        <label for="email3">Email:</label><br>
+                    <form action = "{%  url 'signup' %}" method="POST">
+                        {% csrf_token %}
+                        <!--label for="email3">Email:</label><br>
                         <input type="email" id="email3" name="email"><br>
                         <br>
                         <label for="pwd3">Hasło:</label><br>
@@ -83,7 +84,12 @@
                         <label for="Lekarz">Lekarz</label>
                         <input type="radio" id="Pacjent" name="rola" value="Pacjent">
                         <label for="Pacjent">Pacjent</label><br>
-                        <br>
+                        <br>-->
+                        {{ form.as_p }}
+                        {%  if form.errors %}
+                        <p>Niepoprawne dane</p>
+                        {% endif %}
+
                         <input type="submit" id="submit3" value="Zarejestruj się">
 
                     </form>
