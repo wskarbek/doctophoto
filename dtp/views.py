@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
-from dtp.forms import SignUpForm
+from dtp.forms import SignUpForm, LoginForm
 # Create your views here.
 
 
@@ -27,14 +27,17 @@ def examination(request, examination_id):
 
 
 def login_patient(request):
-    email = request.POST['email1']
-    password = request.POST['pwd1']
-    user = authenticate(request, email=email, password=password)
-    if user is not None:
-        login(request, user)
-        #TODO: Redirect to examination list page
-    #else:
-        #TODO: Display invalid login
+    if(request.method == 'POST'):
+        form = LoginForm(request.POST)
+        email = request.POST['email1']
+        password = request.POST['pwd1']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/account/login/patient')
+        else:
+            #TODO: Display invalid login
+            return redirect('views.welcome')
 
 def login_doctor(request):
     email = request.POST['email1']
