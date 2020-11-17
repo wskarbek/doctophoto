@@ -157,3 +157,30 @@ header {
      color: white;
 
  }
+.container .table{
+     position: absolute;
+     top: 20%;
+     left: 60%;
+     transform: translate(-50%,-50%);
+     color: white;
+    width: 50%;
+
+ }
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+
+}
+th{
+    height: 60px;
+    background-color: dodgerblue;
+}
+
+td{
+    text-align: center;
+    height: 40px;
+}
+tr:hover{
+    background-color: white;
+    color: black;
+}
