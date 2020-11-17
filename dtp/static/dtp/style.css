@@ -148,3 +148,12 @@ header {
     width: 70%;
   }
 }
+
+.container .about{
+     position: absolute;
+     top: 62%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     color: white;
+
+ }
