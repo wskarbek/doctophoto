@@ -29,7 +29,7 @@
         </div>
         <div id="popup1" class="overlay">
             <div class="popup">
-                <h2>Zaloguj Się</h2>
+                <h2>Logowanie</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
@@ -47,7 +47,7 @@
         </div>
         <div id="popup2" class="overlay">
             <div class="popup">
-                <h2>Zaloguj się</h2>
+                <h2>Logowanie</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
@@ -65,18 +65,17 @@
         </div>
         <div id="popup3" class="overlay">
             <div class="popup">
-                <h2>Zarejestruj się</h2>
+                <h2>Rejestracja</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
                     <form action = "{%  url 'signup' %}" method="POST">
                         {% csrf_token %}
-
                         {{ form3.as_p }}
                         {%  if form.errors %}
                         <p>Niepoprawne dane</p>
                         {% endif %}
-
+                    <br>
                         <input type="submit" id="submit3" value="Zarejestruj się">
                     </form>
                 </div>
