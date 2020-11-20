@@ -22,8 +22,8 @@ def contact(request):
     return render(request, 'dtp/contact.html')
 
 
-def examination(request, examination_id):
-    return HttpResponse("Examination id: %s" % examination_id)
+def examination(request):
+    return render(request, 'dtp/examination.html')
 
 
 def login_patient(request):

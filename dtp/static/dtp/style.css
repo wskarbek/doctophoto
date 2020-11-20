@@ -64,7 +64,7 @@ header {
 
  .button {
      position: absolute;
-     top: 62%;
+     top: 60%;
      left: 50%;
      transform: translate(-50%,-50%);
  }
@@ -81,13 +81,13 @@ header {
      background-color: #fff;
      color: #000;
  }
-.register {
+.register h2{
     position: absolute;
-    top: 80%;
+    top: 65%;
     left: 45%;
     color: #fff;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
 
 }
 .overlay {
@@ -150,25 +150,24 @@ header {
 }
 
 .container .about{
-     position: absolute;
-     top: 62%;
-     left: 50%;
-     transform: translate(-50%,-50%);
-     color: white;
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
 
  }
 .container .table{
-     position: absolute;
-     top: 20%;
-     left: 63%;
-     transform: translate(-50%,-50%);
-     color: white;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    color: white;
     width: 50%;
 
  }
 table, th, td {
-  border: 1px solid white;
-  border-collapse: collapse;
+    border: 1px solid white;
+    border-collapse: collapse;
 
 }
 th{
@@ -179,10 +178,6 @@ th{
 td{
     text-align: center;
     height: 40px;
-}
-tr:hover{
-    background-color: white;
-    color: black;
 }
 
 .container .about .column{
