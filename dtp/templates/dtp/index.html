@@ -26,12 +26,14 @@
                         <th>Pacjent</th>
                         <th>Lekarz</th>
                     </tr>
+                    {% for item in examination_list %}
                     <tr onclick="window.location='examination';" style="cursor:pointer;">
-                        <td class="piwo">Noga</td>
-                        <td>17.11.2020</td>
-                        <td>Maciej Duzik</td>
-                        <td>dr Wojtek Magdziak</td>
+                        <td class="piwo">{{ item.title }}</td>
+                        <td>{{ item.pub_date }}</td>
+                        <td></td>
+                        <td>{{ item.doctor_id }}</td>
                     </tr>
+                    {% endfor %}
                     <tr>
                         <td></td>
                         <td></td>

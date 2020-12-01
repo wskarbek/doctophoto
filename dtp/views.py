@@ -2,11 +2,14 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
 from dtp.forms import SignUpForm, LoginForm
+
 # Create your views here.
+from dtp.models import Examination
 
 
 def index(request):
-    return render(request, 'dtp/index.html')
+    examination_list = Examination.objects.all()
+    return render(request, 'dtp/index.html', {'examination_list':examination_list})
 
 
 def welcome(request):
