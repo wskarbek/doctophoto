@@ -47,6 +47,7 @@ header {
 
  .main {
      max-width: 1200px;
+     height: 100px;
      margin: auto;
  }
 
@@ -165,11 +166,9 @@ header {
  }
 
 .container .table{
-    position: absolute;
-    top: 40%;
-    transform: translate(-50%,-50%);
     color: white;
     width: 50%;
+    margin-left: 25%;
  }
 
 table, th, td {

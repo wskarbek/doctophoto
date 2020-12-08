@@ -18,15 +18,15 @@
             </ul>
         </div>
         <div class="container">
-            <div class="table" style="left: 60%; top:20%;">
-                <table style="width: 60%">
+            <div class="table" style="top:20%;">
+                <table style="width:100%">
                     <tr style="pointer-events:none;">
                         <th>Nazwa</th>
                         <th>Data</th>
                         <th>Lekarz</th>
                     </tr>
                     {% for item in examination_list %}
-                    <tr onclick="window.location='examination';" style="cursor:pointer;">
+                    <tr onclick="window.location='examination/{{ item.id }}';" style="cursor:pointer;">
                         <td class="piwo">{{ item.title }}</td>
                         <td>{{ item.pub_date }}</td>
                         <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
