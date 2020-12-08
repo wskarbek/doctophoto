@@ -35,16 +35,15 @@
                         <th>Pacjent</th>
                     </tr>
                     <tr>
-                        <td>17.11.2020</td>
-                        <td>dr Wojtek Magdziak</td>
+                        <td>{{ exam.pub_date }}</td>
+                        <td>{{ exam.doctor.title.short }} {{ exam.doctor.user.last_name }} {{ exam.doctor.user.first_name }}</td>
                         <td>Maciej Duzik</td>
                     </tr>
                     <tr>
-                        <th colspan="3"> Opis badania</th>
+                        <th colspan="3">Opis badania</th>
                     </tr>
                     <tr>
-                        <td colspan="3" style="padding: 10px">Ciężkie złamanie kości jakiejśtam.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum diam tempor pellentesque iaculis. Vivamus eget congue nibh. Morbi id elit eu erat pretium sollicitudin a ut enim. Proin molestie condimentum diam, et consectetur tellus aliquet nec. Morbi consectetur ullamcorper odio at congue. Aliquam tempor at lacus id ultrices. Nunc sed ultrices nisi, non porttitor eros. Praesent tempus egestas libero, vitae vulputate lacus. Vestibulum augue nunc, condimentum eget varius nec, porttitor a nunc. Sed augue ex, eleifend quis nibh vitae, auctor scelerisque lectus. Pellentesque consequat, lacus a congue dignissim, ante dui auctor quam, a sodales ante lacus a urna.</td>
+                        <td colspan="3" style="padding: 10px">{{ exam.description }}</td>
                     </tr>
                 </table>
             </div>

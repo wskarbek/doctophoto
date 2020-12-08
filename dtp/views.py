@@ -9,7 +9,7 @@ from dtp.models import Examination
 
 def index(request):
     examination_list = Examination.objects.all()
-    return render(request, 'dtp/index.html', {'examination_list':examination_list})
+    return render(request, 'dtp/index.html', {'examination_list': examination_list})
 
 
 def welcome(request):
@@ -25,8 +25,9 @@ def contact(request):
     return render(request, 'dtp/contact.html')
 
 
-def examination(request):
-    return render(request, 'dtp/examination.html')
+def examination(request, exam_id):
+    exam = Examination.objects.get(id=exam_id)
+    return render(request, 'dtp/examination.html', {'exam': exam})
 
 
 def login_patient(request):

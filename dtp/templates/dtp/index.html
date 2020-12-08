@@ -23,23 +23,15 @@
                     <tr style="pointer-events:none;">
                         <th>Nazwa</th>
                         <th>Data</th>
-                        <th>Pacjent</th>
                         <th>Lekarz</th>
                     </tr>
                     {% for item in examination_list %}
                     <tr onclick="window.location='examination';" style="cursor:pointer;">
                         <td class="piwo">{{ item.title }}</td>
                         <td>{{ item.pub_date }}</td>
-                        <td></td>
-                        <td>{{ item.doctor_id }}</td>
+                        <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
                     </tr>
                     {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </table>
             </div>
         </div>
