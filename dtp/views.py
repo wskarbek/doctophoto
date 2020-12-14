@@ -1,7 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import check_password
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
-from dtp.forms import SignUpForm, LoginForm
+from dtp.forms import SignUpForm, LoginPatientForm
+from dtp.models import User
 
 # Create your views here.
 from dtp.models import Examination
@@ -13,8 +15,9 @@ def index(request):
 
 
 def welcome(request):
-    form3 = SignUpForm()
-    return render(request, 'dtp/welcome.html', {'form3': form3})
+    log_patient_form = LoginPatientForm()
+    reg_form = SignUpForm()
+    return render(request, 'dtp/welcome.html', {'reg_form': reg_form, 'log_patient_form': log_patient_form})
 
 
 def about(request):
@@ -31,27 +34,34 @@ def examination(request, exam_id):
 
 
 def login_patient(request):
-    if(request.method == 'POST'):
-        form = LoginForm(request.POST)
-        email = request.POST['email1']
-        password = request.POST['pwd1']
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.get(username=username)
+        if user.check_password(password) is True:
             login(request, user)
-            return HttpResponseRedirect('/account/login/patient')
+            print("Logged in as", user)
+            return redirect('index')
         else:
             #TODO: Display invalid login
-            return redirect('views.welcome')
+            print("invalid login")
+            return redirect('welcome')
+
 
 def login_doctor(request):
-    email = request.POST['email1']
-    password = request.POST['pwd1']
-    user = authenticate(request, email=email, password=password)
-    if user is not None:
-        login(request, user)
-        #TODO: Redirect to examination list page
-    #else:
-        #TODO: Display invalid login
+    #TODO: this function needs to check if the user is a doctor
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.get(username=username)
+        if user.check_password(password) is True:
+            login(request, user)
+            print("Logged in as", user)
+            return redirect('index')
+        else:
+            #TODO: Display invalid login
+            print("invalid login")
+            return redirect('welcome')
 
 
 def signup(request):
@@ -59,19 +69,18 @@ def signup(request):
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            #pow_password = form.pow_password
-            form.save()
-            user = authenticate(email=email, password=password)
+            user.set_password(password)
+            user.save()
             login(request, user)
-            return HttpResponseRedirect('welcome')
+            return redirect('index')
         else:
-            return HttpResponseRedirect('welcome')
+            return redirect('welcome')
     else:
         form = form_class()
-    return render(request, 'welcome', {'form': form })
 
-#pog2
+
 def logout(request):
     logout(request)

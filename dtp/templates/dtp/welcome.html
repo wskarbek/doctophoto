@@ -33,14 +33,14 @@
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action="/account/login/patient" method="POST">
-                        <label for="email1">Email:</label><br>
-                        <input type="email" id="email1" name="email"><br>
-                        <br>
-                        <label for="pwd1">Hasło:</label><br>
-                        <input type="password" id="pwd1" name="pwd1"><br>
-                        <br>
-                        <input type="submit" id="submit1" value="Zaloguj się">
+                    <form action="{% url 'login_patient' %}" method="POST">
+                        {% csrf_token %}
+                        {{ log_patient_form.errors }}
+                        <label for="{{ log_patient_form.username.id_for_label }}">{{ log_patient_form.username.label }}</label><br>
+                        {{ log_patient_form.username }}<br>
+                        <label for="{{ log_patient_form.password.id_for_label }}">{{ log_patient_form.password.label }}</label><br>
+                        {{ log_patient_form.password }}<br>
+                        <input type="submit" id="submit2" value="Zaloguj się"/>
                     </form>
                 </div>
             </div>
@@ -69,13 +69,19 @@
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action = "{%  url 'signup' %}" method="POST">
+                    <form action = "{% url 'signup' %}" method="POST">
                         {% csrf_token %}
-                        {{ form3.as_p }}
-                        {%  if form.errors %}
-                        <p>Niepoprawne dane</p>
-                        {% endif %}
-                    <br>
+                        {{ reg_form.errors }}
+                        <label for="{{ reg_form.first_name.id_for_label }}">{{ reg_form.first_name.label }}</label><br>
+                        {{ reg_form.first_name }}<br>
+                        <label for="{{ reg_form.last_name.id_for_label }}">{{ reg_form.last_name.label }}</label><br>
+                        {{ reg_form.last_name }}<br>
+                        <label for="{{ reg_form.username.id_for_label }}">{{ reg_form.username.label }}</label><br>
+                        {{ reg_form.username }}<br>
+                        <label for="{{ reg_form.email.id_for_label }}">{{ reg_form.email.label }}</label><br>
+                        {{ reg_form.email }}<br>
+                        <label for="{{ reg_form.password.id_for_label }}">{{ reg_form.password.label }}</label><br>
+                        {{ reg_form.password }}<br>
                         <input type="submit" id="submit3" value="Zarejestruj się">
                     </form>
                 </div>
