@@ -7,7 +7,12 @@ from dtp.models import User
 
 # Create your views here.
 from dtp.models import Examination
-
+def clean_login(self):
+    data = self.cleaned_data['username']
+    none_users = User.objects.filter(username=data)
+    if none_users.exists() == False:
+        return redirect('welcome')
+    return data
 
 def index(request):
     examination_list = Examination.objects.all()
@@ -37,16 +42,16 @@ def login_patient(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = User.objects.get(username=username)
-        if user.check_password(password) is True:
-            login(request, user)
-            print("Logged in as", user)
-            return redirect('index')
-        else:
-            #TODO: Display invalid login
-            print("invalid login")
+        try:
+            user = User.objects.get(username=username, password=password)
+            if user.check_password(password) is True:
+                login(request, user)
+                return redirect('index')
+            else:
+                #TODO: Display invalid login
+                return redirect('welcome')
+        except User.DoesNotExist:
             return redirect('welcome')
-
 
 def login_doctor(request):
     #TODO: this function needs to check if the user is a doctor
