@@ -12,6 +12,7 @@
                 <img src="{%  static 'dtp/images/logo.png' %}">
             </div>
             <ul>
+                <li><a href="#popup5">Dodaj Opis</a></li>
                 <li class="active"><a href="#">Strona Główna</a></li>
                 <li><a href="about">O Nas</a></li>
                 <li><a href="contact">Kontakt</a></li>
@@ -35,6 +36,25 @@
                 </table>
             </div>
         </div>
+     <div id="popup5" class="overlay">
+                    <div class="popup">
+                        <h2>Dodaj Opis</h2>
+                        <br>
+                        <a class="close" href="#">&times;</a>
+                        <div class="content">
+                            <form>
+                                <label for="popupfile">Dodaj Zdjęcie</label>
+                                <input type="file" id="popupfile"><br><br>
+                                <textarea rows="10" cols="50" placeholder="Noga złamana w pół">
+                                </textarea><br>
+                                <label for="patientlabel">Pacjent:</label>
+                                <input type="text" id="patientlabel" placeholder="Milip Fagdziak"><br><br>
+                                <input type="datetime-local"><br><br>
+                                <input type="submit" id="submit5" value="Zatwierdź"/>
+                            </form>
+                        </div>
+                    </div>
+            </div>
     </header>
 </body>
 </html>
