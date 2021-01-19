@@ -7,28 +7,31 @@
 </head>
 <body>
     <header>
-        <div class="main">
+
+        <div class="navbar">
             <div class="logo">
-                <img src="{%  static 'dtp/images/logo.png' %}">
+                DOCTOPHOTO
             </div>
             <ul>
-                <li><a href="#popup5">Dodaj Opis</a></li>
+                <li><a href="#popup-add">Dodaj Opis</a></li>
                 <li class="active"><a href="#">Strona Główna</a></li>
                 <li><a href="about">O Nas</a></li>
                 <li><a href="contact">Kontakt</a></li>
             </ul>
         </div>
-        <div class="container">
-            <div class="table" style="top:20%;">
-                <table style="width:100%">
-                    <tr style="pointer-events:none;">
+
+        <div class="list-content">
+        <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
+            <div class="table">
+                <table>
+                    <tr id="list-head" style="pointer-events:none;">
                         <th>Nazwa</th>
                         <th>Data</th>
                         <th>Lekarz</th>
                     </tr>
                     {% for item in examination_list %}
-                    <tr onclick="window.location='examination/{{ item.id }}';" style="cursor:pointer;">
-                        <td class="piwo">{{ item.title }}</td>
+                    <tr onclick="window.location='examination/{{ item.id }}';">
+                        <td class="exam">{{ item.title }}</td>
                         <td>{{ item.pub_date }}</td>
                         <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
                     </tr>
@@ -36,25 +39,25 @@
                 </table>
             </div>
         </div>
-     <div id="popup5" class="overlay">
-                    <div class="popup">
-                        <h2>Dodaj Opis</h2>
-                        <br>
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            <form>
-                                <label for="popupfile">Dodaj Zdjęcie</label>
-                                <input type="file" id="popupfile"><br><br>
-                                <textarea rows="10" cols="50" placeholder="Noga złamana w pół">
-                                </textarea><br>
-                                <label for="patientlabel">Pacjent:</label>
-                                <input type="text" id="patientlabel" placeholder="Milip Fagdziak"><br><br>
-                                <input type="datetime-local"><br><br>
-                                <input type="submit" id="submit5" value="Zatwierdź"/>
-                            </form>
-                        </div>
-                    </div>
-            </div>
+         <div id="popup-add" class="overlay">
+             <div class="popup">
+                 <h2>Dodaj badanie</h2>
+                 <br>
+                 <a class="close" href="#">&times;</a>
+                 <div class="content">
+                     <form>
+                         <label for="popupfile">Dodaj zdjęcie</label>
+                         <input type="file" id="popupfile"><br><br>
+                         <textarea rows="10" cols="50" placeholder="Noga złamana w pół"/>
+                         </textarea><br>
+                         <label for="patientlabel">Pacjent:</label>
+                         <input type="text" id="patientlabel" placeholder="Milip Fagdziak"><br><br>
+                         <input type="datetime-local"><br><br>
+                         <input type="submit" id="submit5" value="Zatwierdź"/>
+                     </form>
+                 </div>
+             </div>
+         </div>
     </header>
 </body>
 </html>
