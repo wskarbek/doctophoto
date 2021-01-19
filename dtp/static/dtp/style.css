@@ -89,20 +89,6 @@ html {
     color: #000;
 }
 
-.register h2 {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    color: lightgray;
-    font-size: 15px;
-    transform: translate(-50%,-50%);
-}
-
-.register h2 a {
-    text-decoration: none;
-    color: powderblue;
-}
-
 .overlay {
     position: fixed;
     top: 0;
@@ -160,6 +146,18 @@ html {
 .about img {
     width: 128px;
     height: 128px;
+}
+
+.title-about {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+ }
+
+.title-about h1 {
+    color: #fff;
+    font-size: 65px;
 }
 
 .container .about {
@@ -241,18 +239,6 @@ tr:nth-child(odd) {
     padding: 20px;
     left: 50%;
  }
-
-.title2 {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,-50%);
- }
-
-.title2 h1 {
-    color: #fff;
-    font-size: 65px;
-}
 
 .list-content button,
 .exam-content button {

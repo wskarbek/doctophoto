@@ -18,18 +18,15 @@
             </ul>
         </div>
         <div class="title">
-            <h1>ZALOGUJ SIĘ JAKO</h1>
+            <h1>Witamy w Doctophoto</h1>
         </div>
         <div class="button">
-            <a href="#popup1" class="btn">PACJENT</a>
-            <a href="#popup2" class="btn">LEKARZ</a>
+            <a href="#popup-login" class="btn">Zaloguj się</a>
+            <a href="#popup-regis" class="btn">Zarejestruj się</a>
         </div>
-        <div class="register">
-           <h2>Pacjencie! Nie masz konta? <a href="#popup3">Zarejestruj się!</a></h2>
-        </div>
-        <div id="popup1" class="overlay">
+        <div id="popup-login" class="overlay">
             <div class="popup">
-                <h2>Logowanie pacjenta</h2>
+                <h2>Logowanie</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
@@ -45,27 +42,7 @@
                 </div>
             </div>
         </div>
-        <!-- To do wywalenia
-        <div id="popup2" class="overlay">
-            <div class="popup">
-                <h2>Logowanie lekarza</h2>
-                <br>
-                <a class="close" href="#">&times;</a>
-                <div class="content">
-                    <form action="" method="POST">
-                        <label for="email2">Email:</label><br>
-                        <input type="email" id="email2" name="email"><br>
-                        <br>
-                        <label for="pwd2">Hasło:</label><br>
-                        <input type="password" id="pwd2" name="pwd2"><br>
-                        <br>
-                        <input type="submit" id="submit2" name="submit_login" value="Zaloguj się">
-                    </form>
-                </div>
-            </div>
-        </div>
-        -->
-        <div id="popup3" class="overlay">
+        <div id="popup-regis" class="overlay">
             <div class="popup">
                 <h2>Rejestracja</h2>
                 <br>
@@ -83,7 +60,7 @@
                         <label for="{{ reg_form.email.id_for_label }}">{{ reg_form.email.label }}</label><br>
                         {{ reg_form.email }}<br>
                         <label for="{{ reg_form.password.id_for_label }}">{{ reg_form.password.label }}</label><br>
-                        {{ reg_form.password }}<br>
+                        {{ reg_form.password }}<br><br>
                         <input type="submit" id="submit3" name="submit_register" value="Zarejestruj się">
                     </form>
                 </div>
