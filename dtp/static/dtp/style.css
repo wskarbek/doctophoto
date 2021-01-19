@@ -124,9 +124,8 @@ header {
     padding: 20px;
     background: #fff;
     border-radius: 5px;
-    width: 30%;
+    width: 25%;
     position: relative;
-    transition: all 5s ease-in-out;
 }
 
 .popup h2 {
@@ -153,15 +152,6 @@ header {
 .popup .content {
     max-height: 30%;
     overflow: auto;
-}
-
-@media screen and (max-width: 700px) {
-    .button{
-        width: 70%;
-    }
-    .popup{
-        width: 70%;
-    }
 }
 
 .about img {

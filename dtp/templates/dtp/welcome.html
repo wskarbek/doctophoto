@@ -29,7 +29,7 @@
         </div>
         <div id="popup1" class="overlay">
             <div class="popup">
-                <h2>Logowanie</h2>
+                <h2>Logowanie pacjenta</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
@@ -37,9 +37,9 @@
                         {% csrf_token %}
                         {{ log_patient_form.errors }}
                         <label for="{{ log_patient_form.username.id_for_label }}">{{ log_patient_form.username.label }}</label><br>
-                        {{ log_patient_form.username }}<br>
+                        {{ log_patient_form.username }}<br><br>
                         <label for="{{ log_patient_form.password.id_for_label }}">{{ log_patient_form.password.label }}</label><br>
-                        {{ log_patient_form.password }}<br>
+                        {{ log_patient_form.password }}<br><br>
                         <input type="submit" id="submit2" value="Zaloguj się"/>
                     </form>
                 </div>
@@ -47,7 +47,7 @@
         </div>
         <div id="popup2" class="overlay">
             <div class="popup">
-                <h2>Logowanie</h2>
+                <h2>Logowanie lekarza</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
