@@ -20,7 +20,7 @@ class SignUpForm(forms.ModelForm):
         }
 
 
-class LoginPatientForm(forms.ModelForm):
+class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -31,5 +31,3 @@ class LoginPatientForm(forms.ModelForm):
         widgets = {
             'password': PasswordInput(attrs={'class': 'form-control'})
         }
-
-#TODO: LoginDoctorForm

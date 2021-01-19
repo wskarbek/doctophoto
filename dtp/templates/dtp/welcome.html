@@ -33,25 +33,26 @@
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action="{% url 'login_patient' %}" method="POST">
+                    <form action="{% url 'welcome' %}" method="POST">
                         {% csrf_token %}
-                        {{ log_patient_form.errors }}
-                        <label for="{{ log_patient_form.username.id_for_label }}">{{ log_patient_form.username.label }}</label><br>
-                        {{ log_patient_form.username }}<br><br>
-                        <label for="{{ log_patient_form.password.id_for_label }}">{{ log_patient_form.password.label }}</label><br>
-                        {{ log_patient_form.password }}<br><br>
+                        {{ log_form.errors }}
+                        <label for="{{ log_form.username.id_for_label }}">{{ log_form.username.label }}</label><br>
+                        {{ log_form.username }}<br><br>
+                        <label for="{{ log_form.password.id_for_label }}">{{ log_form.password.label }}</label><br>
+                        {{ log_form.password }}<br><br>
                         <input type="submit" id="submit2" name="submit_login" value="Zaloguj się"/>
                     </form>
                 </div>
             </div>
         </div>
+        <!-- To do wywalenia
         <div id="popup2" class="overlay">
             <div class="popup">
                 <h2>Logowanie lekarza</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action="/account/login/patient" method="POST">
+                    <form action="" method="POST">
                         <label for="email2">Email:</label><br>
                         <input type="email" id="email2" name="email"><br>
                         <br>
@@ -63,13 +64,14 @@
                 </div>
             </div>
         </div>
+        -->
         <div id="popup3" class="overlay">
             <div class="popup">
                 <h2>Rejestracja</h2>
                 <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
-                    <form action = "{% url 'signup' %}" method="POST">
+                    <form action = "{% url 'welcome' %}" method="POST">
                         {% csrf_token %}
                         {{ reg_form.errors }}
                         <label for="{{ reg_form.first_name.id_for_label }}">{{ reg_form.first_name.label }}</label><br>

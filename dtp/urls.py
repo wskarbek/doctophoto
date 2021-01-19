@@ -10,8 +10,5 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('examination/<int:exam_id>', views.examination, name='examination'),
 
-    path('account/login/patient', views.login_patient, name='login_patient'),
-    path('account/login/doctor', views.login_doctor, name='login_doctor'),
     path('account/logout', views.logout, name='logout'),
-    path('account/signup', views.signup, name='signup')
 ]
