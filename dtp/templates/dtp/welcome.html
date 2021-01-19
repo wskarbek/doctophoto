@@ -40,7 +40,7 @@
                         {{ log_patient_form.username }}<br><br>
                         <label for="{{ log_patient_form.password.id_for_label }}">{{ log_patient_form.password.label }}</label><br>
                         {{ log_patient_form.password }}<br><br>
-                        <input type="submit" id="submit2" value="Zaloguj się"/>
+                        <input type="submit" id="submit2" name="submit_login" value="Zaloguj się"/>
                     </form>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         <label for="pwd2">Hasło:</label><br>
                         <input type="password" id="pwd2" name="pwd2"><br>
                         <br>
-                        <input type="submit" id="submit2" value="Zaloguj się">
+                        <input type="submit" id="submit2" name="submit_login" value="Zaloguj się">
                     </form>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         {{ reg_form.email }}<br>
                         <label for="{{ reg_form.password.id_for_label }}">{{ reg_form.password.label }}</label><br>
                         {{ reg_form.password }}<br>
-                        <input type="submit" id="submit3" value="Zarejestruj się">
+                        <input type="submit" id="submit3" name="submit_register" value="Zarejestruj się">
                     </form>
                 </div>
             </div>
