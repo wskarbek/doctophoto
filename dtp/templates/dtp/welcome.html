@@ -32,7 +32,9 @@
                 <div class="content">
                     <form action="{% url 'welcome' %}" method="POST">
                         {% csrf_token %}
-                        {{ log_form.errors }}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
                         <label for="{{ log_form.username.id_for_label }}">{{ log_form.username.label }}</label><br>
                         {{ log_form.username }}<br><br>
                         <label for="{{ log_form.password.id_for_label }}">{{ log_form.password.label }}</label><br>

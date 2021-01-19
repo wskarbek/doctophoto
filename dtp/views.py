@@ -1,45 +1,56 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
+from django.urls import reverse
 from dtp.forms import SignUpForm, LoginForm
 from dtp.models import User
 from dtp.models import Examination
 
 
-# Views
+# Render examination list (index) website
 def index(request):
     examination_list = Examination.objects.all()
     return render(request, 'dtp/index.html', {'examination_list': examination_list})
 
 
+# Render welcome page with login and registration forms.
 def welcome(request):
-    log_form = LoginForm()
-    reg_form = SignUpForm()
     # Check if request is a POST
     if request.method == 'POST':
+        log_form = LoginForm(request.POST)
         username = request.POST['username']
         password = request.POST['password']
+        # Check if the form sent is login form
         if 'submit_login' in request.POST:
+            # Login user if it exists, if it does
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('index')
             else:
-                # TODO: Display invalid login
-                return redirect('welcome')
+                #Display error
+                messages.error(request, 'Nazwa użytkownika lub hasło niepoprawne')
+                return redirect(reverse('welcome') + '#popup-login')
+        # Check if the form sent is registration form
         if 'submit_register' in request.POST:
-            form = SignUpForm(request.POST)
-            if form.is_valid():
-                user = form.save(commit=False)
+            reg_form = SignUpForm(request.POST)
+            # Check if form is valid
+            if reg_form.is_valid():
+                # Create and save user with encrypted password
+                user = reg_form.save(commit=False)
                 user.set_password(password)
                 user.save()
+                # Login user
                 login(request, user)
                 return redirect('index')
             else:
                 # TODO: Display invalid register
-                return redirect('welcome')
-
+                return redirect(reverse('welcome') + '#popup-regis')
+    # Get forms for rendering
+    log_form = LoginForm()
+    reg_form = SignUpForm()
     # Render welcome page
     return render(request, 'dtp/welcome.html', {'reg_form': reg_form, 'log_form': log_form})
 
