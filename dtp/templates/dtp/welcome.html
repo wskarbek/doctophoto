@@ -27,14 +27,17 @@
         <div id="popup-login" class="overlay">
             <div class="popup">
                 <h2>Logowanie</h2>
-                <br>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
                     <form action="{% url 'welcome' %}" method="POST">
                         {% csrf_token %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
+                        {% if messages %}
+                            <h5 class="errormessage">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </h5>
+                        {% endif %}
                         <label for="{{ log_form.username.id_for_label }}">{{ log_form.username.label }}</label><br>
                         {{ log_form.username }}<br><br>
                         <label for="{{ log_form.password.id_for_label }}">{{ log_form.password.label }}</label><br>

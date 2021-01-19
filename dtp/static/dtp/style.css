@@ -143,6 +143,10 @@ html {
     overflow: auto;
 }
 
+.popup .content .errormessage {
+    color: red;
+}
+
 .about img {
     width: 128px;
     height: 128px;
