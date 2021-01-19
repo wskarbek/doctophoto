@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'dtp/style.css' %}">
 </head>
 <body>
-    <header>
+
 
         <div class="navbar">
             <div class="logo">
@@ -21,7 +21,6 @@
         </div>
 
         <div class="exam-content">
-            <button onclick="location.href='#popup-edit'" type="button">Edytuj badanie</button>
             <div class="table">
                 <table>
                     <tr>
@@ -48,6 +47,7 @@
                         <td colspan="3">{{ exam.description }}</td>
                     </tr>
                 </table>
+                <button onclick="location.href='#popup-edit'" type="button">Edytuj badanie</button>
             </div>
             <div id="popup-edit" class="overlay">
                 <div class="popup">
@@ -69,6 +69,6 @@
                 </div>
             </div>
         </div>
-    </header>
+
 </body>
 </html>
