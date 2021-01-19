@@ -89,9 +89,10 @@ header {
 .register h2 {
     position: absolute;
     top: 65%;
-    left: 45%;
+    left: 50%;
     color: lightgray;
     font-size: 15px;
+    transform: translate(-50%,-50%);
 }
 
 .register h2 a {
