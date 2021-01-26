@@ -137,4 +137,3 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'welcome'
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
-SESSION_COOKIE_HTTPONLY = True

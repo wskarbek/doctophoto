@@ -14,10 +14,7 @@
                 DOCTOPHOTO
             </div>
             <ul>
-                <li class="active"><a href="../index"><- powrót do badań</a></li>
-                <li><a href="../welcome">Strona Główna</a></li>
-                <li><a href="../about">O Nas</a></li>
-                <li><a href="../contact">Kontakt</a></li>
+                <li><a href="../index"><- powrót do badań</a></li>
             </ul>
         </div>
 
@@ -48,7 +45,9 @@
                         <td colspan="3">{{ exam.description }}</td>
                     </tr>
                 </table>
+                {% if is_doctor %}
                 <button onclick="location.href='#popup-edit'" type="button">Edytuj badanie</button>
+                {% endif %}
             </div>
             <div id="popup-edit" class="overlay">
                 <div class="popup">

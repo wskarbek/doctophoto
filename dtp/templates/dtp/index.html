@@ -13,27 +13,35 @@
                 DOCTOPHOTO
             </div>
             <ul>
-                <li class="active"><a href="#">Strona Główna</a></li>
-                <li><a href="about">O Nas</a></li>
-                <li><a href="contact">Kontakt</a></li>
+                <li><a href="#">Wyloguj</a></li>
             </ul>
         </div>
         <div class="list-content">
-            <h2>Witaj, {{ first_name }}!</h2><br/>
+            <h2>Witaj, {{ first_name }} {{ last_name }}!</h2><br/>
+            {% if is_doctor %}
             <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
+            {% endif %}
             <input type="text" id="search-exam" onkeyup="search(0)" placeholder="Szukaj badania..."><br/>
             <div class="table">
                 <table id="list-table">
                     <tr id="list-head">
                         <th onclick="sortTable(0)">&#x21D5; Nazwa</th>
                         <th onclick="sortTable(1)">&#x21D5; Data</th>
-                        <th onclick="sortTable(2)">&#x21D5; Lekarz</th>
+                        {% if is_doctor %}
+                            <th onclick="sortTable(2)">&#x21D5; Pacjent</th>
+                        {% else %}
+                            <th onclick="sortTable(2)">&#x21D5; Lekarz</th>
+                        {% endif %}
                     </tr>
                     {% for item in examination_list %}
                     <tr onclick="window.location='examination/{{ item.id }}';">
                         <td class="exam">{{ item.title }}</td>
                         <td>{{ item.pub_date|date:"Y, E d, G:i" }}</td>
-                        <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
+                        {% if is_doctor %}
+                            <td>{{ item.patient.last_name }} {{ item.patient.first_name }}</td>
+                        {% else %}
+                            <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </table>
