@@ -1,1 +1,0 @@
-[{"model": "dtp.doctortitle", "pk": 1, "fields": {"full": "Lekarz Medycyny", "short": "lek. med."}}, {"model": "dtp.doctortitle", "pk": 2, "fields": {"full": "Doktor", "short": "dr"}}, {"model": "dtp.doctortitle", "pk": 3, "fields": {"full": "Profesor", "short": "prof."}}]

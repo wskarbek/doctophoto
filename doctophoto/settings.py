@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import db
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = db.SECRET_KEY
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,15 +77,15 @@ WSGI_APPLICATION = 'doctophoto.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# Settings for example-docker-compose.yml. Should be changed for production.
 DATABASES = {
     'default': {
-        'ENGINE': db.ENGINE,
-        'NAME': db.NAME,
-        'USER': db.USER,
-        'PASSWORD': db.PASSWORD,
-        'HOST': db.HOST,
-        'PORT': db.PORT,
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'doctophoto',
+        'USER': 'doctophoto',
+        'PASSWORD': 'dtp!98',
+        'HOST': 'localhost',
+        'PORT': 5433,
     }
 }
 
