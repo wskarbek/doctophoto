@@ -31,7 +31,7 @@ def welcome(request):
             # Login user if it exists, if it does
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                request.session['username'] = username
+                request.session['username'] = user.username
                 request.session['first_name'] = user.first_name
                 request.session['last_name'] = user.last_name
                 login(request, user)
@@ -51,6 +51,9 @@ def welcome(request):
                 user.save()
                 # Login user
                 login(request, user)
+                request.session['username'] = user.username
+                request.session['first_name'] = user.first_name
+                request.session['last_name'] = user.last_name
                 return redirect('index')
             else:
                 # TODO: Display invalid register
