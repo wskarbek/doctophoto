@@ -164,25 +164,27 @@ html {
     font-size: 65px;
 }
 
-.container .about {
-    position: absolute;
-    top: 63%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: white;
- }
-
 .list-content h2 {
     color: white;
 }
 
+.list-content button {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
 #search-exam {
+    margin-bottom: 20px;
     padding: 10px;
     font-size: 15px;
     border-radius: 4px;
     border: none;
     width: 130px;
-    margin-left: 50px;
 }
 
 .list-content {
@@ -247,14 +249,6 @@ tr:nth-child(odd) {
     padding: 10px;
 }
 
-.container .about .column{
-    margin-top: 10px;
-    float: left;
-    padding: 10px;
-    left: 50%;
- }
-
-.list-content button,
 .exam-content button {
     margin-bottom: 20px;
     padding: 10px;
