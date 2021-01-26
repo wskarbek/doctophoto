@@ -1,5 +1,5 @@
 'venv' 
 desktop.ini
-docker-compose.yml
 db.py
 alembic.ini
+.idea
