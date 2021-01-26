@@ -12,9 +12,11 @@ from dtp.models import Examination
 # Render examination list (index) website
 def index(request):
     examination_list = Examination.objects.all()
-    current_user = request.session['user']
-    print(current_user)
-    return render(request, 'dtp/index.html', {'examination_list': examination_list, 'current_user': current_user})
+    current_user = request.session['username']
+    first_name = request.session['first_name']
+    last_name = request.session['last_name']
+    return render(request, 'dtp/index.html', {'examination_list': examination_list, 'current_user': current_user,
+                                              'first_name': first_name, 'last_name': last_name})
 
 
 # Render welcome page with login and registration forms.
@@ -29,7 +31,9 @@ def welcome(request):
             # Login user if it exists, if it does
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                request.session['user'] = user
+                request.session['username'] = username
+                request.session['first_name'] = user.first_name
+                request.session['last_name'] = user.last_name
                 login(request, user)
                 return redirect('index')
             else:
