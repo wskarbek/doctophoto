@@ -18,17 +18,16 @@
                 <li><a href="contact">Kontakt</a></li>
             </ul>
         </div>
-        <div class="greet">Witaj, {{ first_name }}!</div>
         <div class="list-content">
-            <h2>Lista badań</h2><br/>
-            <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button><br/>
-            <input type="text" id="myInput" onkeyup="search(0)" placeholder="Szukaj po nazwie..." title="Type in a name"><br/>
+            <h2>Witaj, {{ first_name }}!</h2><br/>
+            <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
+            <input type="text" id="search-exam" onkeyup="search(0)" placeholder="Szukaj badania..."><br/>
             <div class="table">
                 <table id="list-table">
                     <tr id="list-head">
-                        <th onclick="sortTable(0)">Nazwa</th>
-                        <th onclick="sortTable(1)">Data</th>
-                        <th onclick="sortTable(2)">Lekarz</th>
+                        <th onclick="sortTable(0)">&#x21D5; Nazwa</th>
+                        <th onclick="sortTable(1)">&#x21D5; Data</th>
+                        <th onclick="sortTable(2)">&#x21D5; Lekarz</th>
                     </tr>
                     {% for item in examination_list %}
                     <tr onclick="window.location='examination/{{ item.id }}';">
@@ -65,7 +64,7 @@
 <script>
     function search(n) {
       let input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
+      input = document.getElementById("search-exam");
       filter = input.value.toUpperCase();
       table = document.getElementById("list-table");
       tr = table.getElementsByTagName("tr");
