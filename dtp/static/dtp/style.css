@@ -172,6 +172,19 @@ html {
     color: white;
  }
 
+.list-content h2 {
+    color: white;
+}
+
+#search-exam {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: none;
+    width: 130px;
+    margin-left: 50px;
+}
+
 .list-content {
     text-align: center;
 }
@@ -184,10 +197,6 @@ html {
 
 .list-content tr {
     cursor: pointer;
-}
-
-.list-content .list-head {
-    pointer-events: none;
 }
 
 .list-content tr:hover {

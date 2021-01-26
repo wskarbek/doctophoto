@@ -18,21 +18,21 @@
                 <li><a href="contact">Kontakt</a></li>
             </ul>
         </div>
-
         <div class="list-content">
-        <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
-            <div class="test">Witaj, {{ first_name }} !</div>
+            <h2>Witaj, {{ first_name }}!</h2><br/>
+            <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
+            <input type="text" id="search-exam" onkeyup="search(0)" placeholder="Szukaj badania..."><br/>
             <div class="table">
-                <table>
-                    <tr id="list-head" style="pointer-events:none;">
-                        <th>Nazwa</th>
-                        <th>Data</th>
-                        <th>Lekarz</th>
+                <table id="list-table">
+                    <tr id="list-head">
+                        <th onclick="sortTable(0)">&#x21D5; Nazwa</th>
+                        <th onclick="sortTable(1)">&#x21D5; Data</th>
+                        <th onclick="sortTable(2)">&#x21D5; Lekarz</th>
                     </tr>
                     {% for item in examination_list %}
                     <tr onclick="window.location='examination/{{ item.id }}';">
                         <td class="exam">{{ item.title }}</td>
-                        <td>{{ item.pub_date }}</td>
+                        <td>{{ item.pub_date|date:"Y, E d, G:i" }}</td>
                         <td>{{ item.doctor.title.short }} {{ item.doctor.user.last_name }} {{ item.doctor.user.first_name }}</td>
                     </tr>
                     {% endfor %}
@@ -48,16 +48,73 @@
                      <form>
                          <label for="popupfile">Dodaj zdjęcie</label>
                          <input type="file" id="popupfile"><br><br>
-                         <textarea rows="10" cols="50" placeholder="Noga złamana w pół"/>
+                         <textarea rows="10" cols="50"/>
                          </textarea><br>
                          <label for="patientlabel">Pacjent:</label>
-                         <input type="text" id="patientlabel" placeholder="Milip Fagdziak"><br><br>
+                         <input type="text" id="patientlabel"><br><br>
                          <input type="datetime-local"><br><br>
                          <input type="submit" id="submit5" value="Zatwierdź"/>
                      </form>
                  </div>
              </div>
          </div>
-
 </body>
 </html>
+
+<script>
+    function search(n) {
+      let input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("search-exam");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("list-table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[n];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function sortTable(n) {
+        let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("list-table");
+        switching = true;
+        dir = "asc";
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                if (dir === "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir === "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount++;
+            } else {
+                if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+                }
+            }
+        }
+    }
+</script>
