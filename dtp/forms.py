@@ -31,3 +31,14 @@ class LoginForm(forms.ModelForm):
         widgets = {
             'password': PasswordInput(attrs={'class': 'form-control'})
         }
+
+
+class AddExaminationForm(forms.ModelForm):
+    my_date_field = forms.DateField(
+        widget=forms.DateInput(format=('%d-%m-%Y'),
+                               attrs={'class':'myDateClass',
+                               'placeholder':'Select a date'}))
+    class Meta:
+        model = User
+        widgets = {
+        }

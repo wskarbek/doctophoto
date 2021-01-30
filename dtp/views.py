@@ -81,7 +81,6 @@ def examination(request, exam_id):
         is_doctor = True
     return render(request, 'dtp/examination.html', {'exam': exam, 'is_doctor': is_doctor})
 
-
 # Controllers
 def logout(request):
     logout(request)
