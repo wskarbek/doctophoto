@@ -1,8 +1,8 @@
+from dtp.models import Examination
 from django import forms
 from django.forms import PasswordInput
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password, make_password
-
 
 class SignUpForm(forms.ModelForm):
     class Meta:
@@ -34,11 +34,13 @@ class LoginForm(forms.ModelForm):
 
 
 class AddExaminationForm(forms.ModelForm):
-    my_date_field = forms.DateField(
-        widget=forms.DateInput(format=('%d-%m-%Y'),
-                               attrs={'class':'myDateClass',
-                               'placeholder':'Select a date'}))
     class Meta:
-        model = User
+        model = Examination
+        fields = ['title', 'description', 'patient']
+        labels = {
+            'title' : 'Tytuł',
+            'description' : 'Deskrypcja',
+            'patient': 'Pacjent'
+        }
         widgets = {
         }
