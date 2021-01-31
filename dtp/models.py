@@ -19,15 +19,9 @@ class Examination(models.Model):
     title = models.CharField(max_length=30)
     pub_date = models.DateTimeField('date published')
     description = models.TextField(max_length=350)
+    photo = models.ImageField(blank=True, upload_to='scans')
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
-
-
-class ExaminationPhoto(models.Model):
-    image = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.image

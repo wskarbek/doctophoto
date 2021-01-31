@@ -137,3 +137,6 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'welcome'
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
+MEDIA_ROOT='C:/tmp/doctophoto/'
+MEDIA_URL='/media/'

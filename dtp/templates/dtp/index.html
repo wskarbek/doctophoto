@@ -18,7 +18,7 @@
         <div class="list-content">
             <h2>Witaj, {{ first_name }} {{ last_name }}!</h2><br/>
             {% if is_doctor %}
-            <button onclick="location.href='#popup-add'" type="button">Dodaj badanie</button>
+            <button onclick="location.href='/dtp/addExamination'" type="button">Dodaj badanie</button>
             {% endif %}
             <input type="text" id="search-exam" onkeyup="search(0)" placeholder="Szukaj badania..."><br/>
             <div class="table">
@@ -46,25 +46,6 @@
                 </table>
             </div>
         </div>
-         <div id="popup-add" class="overlay">
-             <div class="popup">
-                 <h2>Dodaj badanie</h2>
-                 <br>
-                 <a class="close" href="#">&times;</a>
-                 <div class="content">
-                     <form>
-                         <label for="popupfile">Dodaj zdjęcie</label>
-                         <input type="file" id="popupfile"><br><br>
-                         <textarea rows="10" cols="50"/>
-                         </textarea><br>
-                         <label for="patientlabel">Pacjent:</label>
-                         <input type="text" id="patientlabel"><br><br>
-                         <input type="datetime-local"><br><br>
-                         <input type="submit" id="submit5" value="Zatwierdź"/>
-                     </form>
-                 </div>
-             </div>
-         </div>
 </body>
 </html>
 

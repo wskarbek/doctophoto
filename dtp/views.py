@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
 from django.contrib import messages
@@ -5,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, render, redirect
 from django.urls import reverse
-from dtp.forms import SignUpForm, LoginForm
+from dtp.forms import SignUpForm, LoginForm, AddExaminationForm
 from dtp.models import Examination, Doctor, User
 
 
@@ -80,6 +82,24 @@ def examination(request, exam_id):
     if hasattr(user, 'doctor'):
         is_doctor = True
     return render(request, 'dtp/examination.html', {'exam': exam, 'is_doctor': is_doctor})
+
+
+def add_examination(request):
+    if request.method == 'POST':
+        form = AddExaminationForm(request.POST.copy(), request.FILES.copy())
+        doctor = Doctor.objects.get(user_id = request.session['_auth_user_id'])
+        form.data['doctor'] = doctor.id
+        print(request.session['_auth_user_id'])
+        print(form.errors)
+        print(form)
+        if form.is_valid():
+            form.save()
+        else:
+            messages.error(request, 'Niepoprawne dane')
+            return redirect(reverse('addExamination'), form)
+        return redirect('index')
+    add_examination_form = AddExaminationForm()
+    return render(request, 'dtp/addExamination.html', {'form': add_examination_form})
 
 # Controllers
 def logout(request):

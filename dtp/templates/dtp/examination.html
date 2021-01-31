@@ -2,13 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Doc To Photo</title>
+    <title>{{ exam.title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'dtp/style.css' %}">
     <meta charset="utf-8" />
 </head>
 <body>
-
-
         <div class="navbar">
             <div class="logo">
                 DOCTOPHOTO
@@ -25,8 +23,7 @@
                         <th colspan="3">Zdjęcia RTG</th>
                     </tr>
                     <tr>
-                        <td colspan="3"><img src="{%  static 'dtp/images/dzik.jpg' %}" alt="Zdj1" style="width:400px; height:200px;"> <br>
-                        <img src="{%  static 'dtp/images/swierszcz.jpg' %}" alt="Zdj2" style="width:400px;height:200px;"></td>
+                        <td colspan="3"><img src="{{ exam.photo.url }}" alt="Zdj" style="width:400px; height:200px;"> <br></td>
                     </tr>
                     <tr>
                         <th>Data</th>
@@ -36,7 +33,7 @@
                     <tr>
                         <td>{{ exam.pub_date }}</td>
                         <td>{{ exam.doctor.title.short }} {{ exam.doctor.user.last_name }} {{ exam.doctor.user.first_name }}</td>
-                        <td>Maciej Dudzik</td>
+                        <td>{{ exam.patient.last_name }} {{ exam.patient.first_name }}</td>
                     </tr>
                     <tr>
                         <th colspan="3">Opis badania</th>
@@ -45,28 +42,6 @@
                         <td colspan="3">{{ exam.description }}</td>
                     </tr>
                 </table>
-                {% if is_doctor %}
-                <button onclick="location.href='#popup-edit'" type="button">Edytuj badanie</button>
-                {% endif %}
-            </div>
-            <div id="popup-edit" class="overlay">
-                <div class="popup">
-                    <h2>Edytuj badanie</h2>
-                    <br>
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        <form>
-                            <label for="popupfile">Dodaj zdjęcie</label>
-                            <input type="file" id="popupfile"><br><br>
-                            <textarea rows="10" cols="50" placeholder="Noga złamana w pół"/>
-                            </textarea><br>
-                            <label for="patientlabel">Pacjent:</label>
-                            <input type="text" id="patientlabel" placeholder="Milip Fagdziak"><br><br>
-                            <input type="datetime-local"><br><br>
-                            <input type="submit" id="submit4" value="Zatwierdź"/>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
 
