@@ -13,6 +13,8 @@ from dtp.models import Examination, Doctor, User
 
 # Render examination list (index) website
 def index(request):
+    if '_auth_user_id' not in request.session:
+        return redirect('welcome')
     user = User.objects.get(pk=request.session['_auth_user_id'])
     is_doctor = False
     # Check if user is a doctor
@@ -75,8 +77,13 @@ def contact(request):
 
 
 def examination(request, exam_id):
+    if '_auth_user_id' not in request.session:
+        return redirect('welcome')
     exam = Examination.objects.get(id=exam_id)
     user = User.objects.get(pk=request.session['_auth_user_id'])
+
+    if not (exam.patient_id == user.id or exam.doctor.user_id) == user.id:
+        return redirect('welcome')
     is_doctor = False
     # Check if user is a doctor
     if hasattr(user, 'doctor'):
@@ -85,13 +92,15 @@ def examination(request, exam_id):
 
 
 def add_examination(request):
+    if '_auth_user_id' not in request.session:
+        return redirect('welcome')
+    user = User.objects.get(pk=request.session['_auth_user_id'])
+    if not hasattr(user, 'doctor'):
+        return redirect('welcome')
     if request.method == 'POST':
         form = AddExaminationForm(request.POST.copy(), request.FILES.copy())
-        doctor = Doctor.objects.get(user_id = request.session['_auth_user_id'])
+        doctor = Doctor.objects.get(user_id=request.session['_auth_user_id'])
         form.data['doctor'] = doctor.id
-        print(request.session['_auth_user_id'])
-        print(form.errors)
-        print(form)
         if form.is_valid():
             form.save()
         else:
@@ -100,6 +109,7 @@ def add_examination(request):
         return redirect('index')
     add_examination_form = AddExaminationForm()
     return render(request, 'dtp/addExamination.html', {'form': add_examination_form})
+
 
 # Controllers
 def logout(request):
