@@ -159,6 +159,14 @@ html {
     left: 50%;
     transform: translate(-50%,-50%);
  }
+.aboutus {
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-bottom: 10px;
+    color: white;
+ }
 
 .title-about h1 {
     color: #fff;
@@ -288,7 +296,7 @@ tr:nth-child(odd) {
 }
 
 div.gallery {
-  margin-top: 450px;
+  margin-top: 500px;
   border: 1px solid #ccc;
 }
 
