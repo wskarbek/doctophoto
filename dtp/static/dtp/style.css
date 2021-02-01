@@ -57,23 +57,24 @@ html {
     margin: auto;
 }
 
-.title {
+.title, .title-contact {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
-.title h1{
+.title h1, .title-contact h1{
     color: #fff;
     font-size: 65px;
 }
 
-.button {
+.button, .contact {
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%,-50%);
+    color: white;
 }
 
 .btn {
@@ -154,7 +155,7 @@ html {
 
 .title-about {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
  }
