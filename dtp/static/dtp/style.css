@@ -268,6 +268,24 @@ tr:nth-child(odd) {
     margin-top: 20px;
 }
 
+.addForm {
+    border: 1px solid #888;
+    background-color: #fefefe;
+    padding: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-49%,-50%);
+}
+
+.addForm #id_title {
+    width: 263px;
+}
+
+.addForm #back {
+    margin-left: 140px;
+}
+
 div.gallery {
   margin-top: 450px;
   border: 1px solid #ccc;
@@ -295,12 +313,12 @@ div.desc {
 .responsive {
   padding: 0 6px;
   float: left;
-  width: 24.99999%;
+  width: 25%;
 }
 
 @media only screen and (max-width: 700px) {
   .responsive {
-    width: 49.99999%;
+    width: 50%;
     margin: 6px 0;
   }
 }

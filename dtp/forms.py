@@ -40,8 +40,8 @@ class AddExaminationForm(forms.ModelForm):
         model = Examination
         fields = ['title', 'description', 'patient', 'photo', 'pub_date', 'doctor']
         labels = {
-            'title' : 'Tytuł',
-            'description' : 'Deskrypcja',
+            'title': 'Tytuł',
+            'description': 'Opis',
             'patient': 'Pacjent',
             'photo': 'Zdjęcie',
             'pub_date': 'Data badania'
