@@ -1,8 +1,12 @@
 # doctophoto
 Web application, built with Django, that allows doctor to send radiography images with description to his patients.
-Doctors only see descriptions they made and patients only see their own descriptions.
 It was a group project for PRO subject at PJAIT university.
 
+# Features
+* Login and registration
+* Doctors can create "descriptions" of radiography photos
+* Patients can view their descriptions and radiography photos
+* Various data is hidden from users who aren't supposed to see it (e.g. an patient can't see someone's else description)
 
 ## Project setup
 1. Clone the repo
