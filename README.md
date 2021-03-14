@@ -1,6 +1,6 @@
 # doctophoto
 Web application, built with Django, that allows doctor to send radiography images with description to his patients.
-It was a group project for PRO subject at PJAIT university.
+It was a group project for PRO course at PJAIT university.
 
 # Features
 * Login and registration
